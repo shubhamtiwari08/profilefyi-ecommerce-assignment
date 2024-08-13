@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
     const [isOpen, setIsOpen] = useState<Boolean>(false);
@@ -15,8 +16,8 @@ const Navbar: React.FC = () => {
           </div>
           <div className="hidden md:block">
             <div className="flex items-baseline ml-10 space-x-4">
-              <a href="/products" className="px-3 py-2 text-sm font-medium rounded-md hover:bg-blue-700">Products</a>
-              <a href="/cart" className="px-3 py-2 text-sm font-medium rounded-md hover:bg-blue-700">Cart</a>
+              <NavLink to="/products" className="px-3 py-2 text-sm font-medium rounded-md hover:bg-blue-700">Products</NavLink>
+              <NavLink to="/cart" className="px-3 py-2 text-sm font-medium rounded-md hover:bg-blue-700">Cart</NavLink>
             </div>
           </div>
           <div className="flex -mr-2 md:hidden">
