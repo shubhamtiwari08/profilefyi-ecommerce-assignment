@@ -1,17 +1,31 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../Store/index';
-import { removeFromCart } from '../Store/slices/cartSlice';
+import {  decreaseQuantity, increaseQuantity, removeFromCart } from '../Store/slices/cartSlice';
+
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  imageUrl: string;
+}
 
 
 const Cart: React.FC = () => {
   const dispatch = useDispatch();
   const items = useSelector((state: RootState) => state.cart.items);
-  console.log(items)
 
   const handleRemove = (id: number) => {
     dispatch(removeFromCart(id));
   };
+
+ const handleAdd = (product:Product) => {
+  dispatch(increaseQuantity(product));
+};
+
+const handleSubtract =(product:Product) =>{
+  dispatch(decreaseQuantity(product))
+}
 
 
 
@@ -28,12 +42,15 @@ const Cart: React.FC = () => {
                 <h3 className="text-lg font-semibold">{item.name}</h3>
                 <p className="text-gray-600">${item.price.toFixed(2)}</p>
                 <div className="flex items-center mt-2">
+                  <button className='w-8 h-8 px-2 border border-gray-200 rounded-full' onClick={()=>handleSubtract(item)}>-</button>
                   <input
                     type="number"
                     min="1"
-                    value={item.quantity}
-                    className="w-16 p-1 border border-gray-300"
-                  />
+                    value={item.quantity || 1}
+                    className="w-16 p-1 text-center"
+                    readOnly
+                    />
+                  <button className='w-8 h-8 px-2 border border-gray-200 rounded-full' onClick={()=>handleAdd(item)}>+</button>
                   <button
                     onClick={() => handleRemove(item.id)}
                     className="px-4 py-2 ml-4 text-white bg-red-500 rounded"
