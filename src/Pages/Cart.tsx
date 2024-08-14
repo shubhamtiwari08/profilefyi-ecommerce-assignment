@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../Store/index';
 import {  decreaseQuantity, increaseQuantity, removeFromCart } from '../Store/slices/cartSlice';
@@ -10,8 +10,13 @@ interface Product {
   imageUrl: string;
 }
 
+interface Total {
+  total : number;
+}
+
 
 const Cart: React.FC = () => {
+  const [total,setTotal] = useState<Total>({total:0})
   const dispatch = useDispatch();
   const items = useSelector((state: RootState) => state.cart.items);
 
@@ -21,11 +26,23 @@ const Cart: React.FC = () => {
 
  const handleAdd = (product:Product) => {
   dispatch(increaseQuantity(product));
+  handleTotal()
 };
 
 const handleSubtract =(product:Product) =>{
   dispatch(decreaseQuantity(product))
 }
+
+const handleTotal = ()=>{
+  const total = items.reduce((acc ,curr) => acc + curr.price * (curr.quantity || 1)  , 0 )
+  setTotal({total})
+}
+
+
+
+useEffect(()=>{
+  handleTotal()
+},[items])
 
 
 
@@ -47,7 +64,7 @@ const handleSubtract =(product:Product) =>{
                     type="number"
                     min="1"
                     value={item.quantity || 1}
-                    className="w-16 p-1 text-center"
+                    className="w-16 p-1 text-center item-count"
                     readOnly
                     />
                   <button className='w-8 h-8 px-2 border border-gray-200 rounded-full' onClick={()=>handleAdd(item)}>+</button>
@@ -70,9 +87,9 @@ const handleSubtract =(product:Product) =>{
       <div className="flex-1 p-4 bg-gray-100">
         <h2 className="mb-4 text-xl font-bold">Cart Summary</h2>
         <div className="mb-4">
-          <p className="text-lg font-semibold">Subtotal: 0</p>
+          <p className="text-lg font-semibold">Subtotal: {total.total.toFixed(2)}</p>
           <p className="text-lg font-semibold">Discount: 0</p>
-          <p className="text-lg font-semibold">Total: 0</p>
+          <p className="text-lg font-semibold">Total:  {total.total.toFixed(2)}</p>
         </div>
         <button className="w-full px-4 py-2 text-white bg-blue-500 rounded">Proceed to Checkout</button>
       </div>
