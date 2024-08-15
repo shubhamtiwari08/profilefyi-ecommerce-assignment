@@ -4,6 +4,7 @@ import './App.css'
 import Navbar from './Components/Navbar/Navbar'
 import ProductListing from './Pages/ProductListing'
 import Cart from './Pages/Cart'
+import Home from './Pages/Home';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
      <Routes>
           <Route path="/products" element={<ProductListing />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/" element={<Home />} />
       </Routes>
     </Router>
     </>

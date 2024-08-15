@@ -1,3 +1,5 @@
+import { ShoppingCartIcon } from '@heroicons/react/16/solid';
+import { GiftTopIcon } from '@heroicons/react/20/solid';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -16,8 +18,8 @@ const Navbar: React.FC = () => {
           </div>
           <div className="hidden md:block">
             <div className="flex items-baseline ml-10 space-x-4">
-              <NavLink to="/products" className="px-3 py-2 text-sm font-medium rounded-md hover:bg-blue-700">Products</NavLink>
-              <NavLink to="/cart" className="px-3 py-2 text-sm font-medium rounded-md hover:bg-blue-700">Cart</NavLink>
+              <NavLink to="/products" className="px-3 py-2 text-sm font-medium rounded-md hover:bg-blue-700"><GiftTopIcon className="inline-block w-6 h-6 pb-1 text-white" />Products</NavLink>
+              <NavLink to="/cart" className="px-3 py-2 text-sm font-medium rounded-md hover:bg-blue-700"><ShoppingCartIcon className="inline-block w-6 h-6 pb-1 text-white" />Cart</NavLink>
             </div>
           </div>
           <div className="flex -mr-2 md:hidden">
