@@ -33,7 +33,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         {!isAddedToCart ? (
           <button
             onClick={onAddToCart}
-            className="w-full px-4 py-2 text-white transition-all ease-in-out transform scale-100 bg-blue-500 opacity-100 hover:bg-blue-600 duration-800"
+            className="w-full px-4 py-2 text-white transition-all ease-in-out transform scale-100 bg-yellow-500 opacity-100 hover:bg-orange-500 duration-800"
           >
            <ShoppingCartIcon className="inline-block w-6 h-6 pb-1 text-white" /> Add to Cart
           </button>

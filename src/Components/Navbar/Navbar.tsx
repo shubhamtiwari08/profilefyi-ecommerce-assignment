@@ -1,7 +1,7 @@
 import { ShoppingCartIcon } from '@heroicons/react/16/solid';
 import { GiftTopIcon } from '@heroicons/react/20/solid';
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
     const [isOpen, setIsOpen] = useState<Boolean>(false);
@@ -10,11 +10,11 @@ const Navbar: React.FC = () => {
       setIsOpen(!isOpen);
     };
   return (
-    <nav className="text-white bg-blue-800">
+    <nav className="text-white bg-blue-600">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <a href="/" className="text-2xl font-bold">ShipArt</a>
+            <Link to="/" className="text-2xl font-lobster">ShipArt <span className='font-sans text-xs font-semibold text-yellow-200'>Artist's Home</span></Link>
           </div>
           <div className="hidden md:block">
             <div className="flex items-baseline ml-10 space-x-4">
