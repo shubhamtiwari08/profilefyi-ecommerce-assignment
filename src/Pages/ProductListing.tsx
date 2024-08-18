@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
   import { RootState } from '../Store/index';
 import { setProducts } from '../Store/slices/productSlice';
-import { addToCart, removeFromCart } from '../Store/slices/cartSlice';
+import { addToCart } from '../Store/slices/cartSlice';
 
 interface Product {
     id: number;

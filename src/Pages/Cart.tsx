@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../Store/index";
-import {
-  decreaseQuantity,
-  increaseQuantity,
-  removeFromCart,
-} from "../Store/slices/cartSlice";
 import CartProductCard from "../Components/ProductCard/CartProductCard";
 import { Link } from "react-router-dom";
 
