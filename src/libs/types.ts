@@ -23,3 +23,10 @@ export interface CartItem {
     itemDetails: CartItem;
   }
   
+
+
+export interface ButtonProps {
+    children: React.ReactNode;
+    onClick?:()=>void;
+    color:string;
+  }

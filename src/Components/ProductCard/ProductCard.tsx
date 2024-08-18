@@ -3,8 +3,9 @@ import {
   ShoppingCartIcon,
 } from "@heroicons/react/16/solid";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ProductCardProps } from "../../libs/types";
+import Button from "../Button/Button";
 
 
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -16,7 +17,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
   description,
   discount,
 }) => {
-  const Navigate = useNavigate()
   return (
     <div className="group pt-4 overflow-hidden bg-white  hover:shadow-product hover:cursor-pointer h-[90%]">
       <img src={imageUrl} alt={name} className="object-contain w-full h-64" />
@@ -35,21 +35,17 @@ const ProductCard: React.FC<ProductCardProps> = ({
           </span>
         </p>
         {!isAddedToCart ? (
-          <button
-            onClick={onAddToCart}
-            className="w-full px-4 py-2 text-white transition-all duration-700 ease-in-out transform scale-100 bg-yellow-500 opacity-100 hover:bg-yellow-600"
-          >
-            <ShoppingCartIcon className="inline-block w-6 h-6 pb-1 text-white" />{" "}
-            Add to Cart
-          </button>
+          <Button onClick={onAddToCart} color={"yellow"}>
+             <ShoppingCartIcon className="inline-block w-6 h-6 pb-1 text-white" />{" "}
+             Add to Cart
+          </Button>
         ) : (
-          <button
-            onClick={()=>Navigate("/cart")}
-            className="flex items-center justify-center w-full px-4 py-2 text-white transition-all duration-700 ease-in-out transform scale-100 bg-orange-500 opacity-100 hover:bg-orange-600"
-          >
-            <span>Go to cart</span>
-            <ArrowLongRightIcon className="inline-block w-6 h-6 pt-1 text-white transition-all duration-700 ease-in-out transform group-hover:translate-x-1" />{" "}
-          </button>
+         <Link to={'/cart'}>
+         <Button color="orange">
+             <span>Go to cart</span>
+             <ArrowLongRightIcon className="inline-block w-6 h-6 pt-1 text-white transition-all duration-700 ease-in-out transform group-hover:translate-x-1" />{" "}
+         </Button>
+         </Link>
         )}
       </div>
     </div>
