@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { RootState } from "../Store/index";
 import CartProductCard from "../Components/ProductCard/CartProductCard";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 interface Total {
   total: number;
