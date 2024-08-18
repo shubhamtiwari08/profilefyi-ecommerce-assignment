@@ -40,6 +40,8 @@ const CartProductCard: React.FC<Props> = ({ itemDetails }) => {
     dispatch(decreaseQuantity(product));
   };
 
+  let disableQuantityBtn:boolean = quantity === 1 ? true : false
+
   return (
     <div className="flex flex-col w-full p-4 border-b border-gray-200">
       <div key={id} className="flex items-start mb-1">
@@ -66,8 +68,9 @@ const CartProductCard: React.FC<Props> = ({ itemDetails }) => {
       </div>
       <div className="flex items-center gap-2 mt-2">
             <button
-              className="w-6 h-6 pb-1 text-base leading-5 border border-gray-300 rounded-full cursor-pointer bg-gray-50"
+              className="w-6 h-6 pb-1 text-base leading-5 border border-gray-300 rounded-full cursor-pointer bg-gray-50 disabled:text-gray-400"
               onClick={() => handleSubtract(itemDetails)}
+              disabled={disableQuantityBtn}
             >
               <span>-</span>
             </button>

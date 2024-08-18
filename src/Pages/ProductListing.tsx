@@ -29,9 +29,6 @@ const ProductListing: React.FC = () => {
       dispatch(addToCart(product));
     };
 
-    const handleRemoveFromCart = (productID:number) => {
-      dispatch(removeFromCart(productID));
-    };
 
     
 
@@ -51,7 +48,6 @@ const ProductListing: React.FC = () => {
       name={product.name}
       price={product.price}
       onAddToCart={() => handleAddToCart(product)}
-      onRemoveFromCart={()=>handleRemoveFromCart(product.id)}
       isAddedToCart={cartItems.find(item => item.id === product.id)? true : false}
       discount={product.discount}
       description={product.description}
