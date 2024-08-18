@@ -35,7 +35,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           </span>
         </p>
         {!isAddedToCart ? (
-          <Button onClick={onAddToCart} color="yellow">
+          <Button onClick={onAddToCart} color="blue">
              <ShoppingCartIcon className="inline-block w-6 h-6 pb-1 text-white" />{" "}
              Add to Cart
           </Button>
