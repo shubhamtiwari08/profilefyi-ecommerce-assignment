@@ -3,6 +3,7 @@ import { RootState } from "../Store/index";
 import CartProductCard from "../Components/ProductCard/CartProductCard";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Button from "../Components/Button/Button";
 
 interface Total {
   total: number;
@@ -40,7 +41,7 @@ const Cart: React.FC = () => {
           <h2 className="p-2 mb-4 text-xl font-bold bg-white text-blue-500 shadow-sm w-[80%] mx-auto mt-2 border border-gray-200">
             Your Cart
           </h2>
-          
+
           <div className="grid md:grid-cols-[60%_auto] gap-y-2 gap-x-4 w-[80%] mx-auto relative">
             <div className="relative flex flex-col order-2 bg-white border border-gray-200 shadow-sm md:order-1 h-max">
               {/* Product List */}
@@ -50,9 +51,11 @@ const Cart: React.FC = () => {
                 ))}
               </div>
               <div className="sticky bottom-0 flex justify-end w-full p-4 px-4 mt-4 bg-white shadow-product">
-                <button className="px-4 py-2 font-semibold text-white uppercase transition-all duration-700 ease-in-out transform scale-100 bg-orange-500 opacity-100 hover:bg-orange-600">
+                <div className="font-semibold w-44">
+                <Button color="secondary">
                   PLACE ORDER
-                </button>
+                </Button>
+                </div>
               </div>
             </div>
             

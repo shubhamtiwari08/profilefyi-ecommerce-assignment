@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
                 to="/products"
                 className="px-3 py-2 text-sm font-medium rounded-md hover:bg-blue-700"
               >
-                <GiftTopIcon className="inline-block w-6 h-6 pb-1 text-white" />
+              <GiftTopIcon className="inline-block w-6 h-6 pb-1 text-white" />
                 Products
               </NavLink>
               <NavLink
@@ -74,18 +74,18 @@ const Navbar: React.FC = () => {
       {isOpen && (
         <div className="md:hidden" id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a
-              href="/products"
+            <Link
+              to="/products"
               className="block px-3 py-2 text-base font-medium rounded-md hover:bg-blue-700"
             >
               Products
-            </a>
-            <a
-              href="/cart"
+            </Link>
+            <Link
+              to="/cart"
               className="block px-3 py-2 text-base font-medium rounded-md hover:bg-blue-700"
             >
               Cart
-            </a>
+            </Link>
           </div>
         </div>
       )}
