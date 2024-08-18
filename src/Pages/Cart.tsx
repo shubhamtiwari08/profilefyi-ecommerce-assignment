@@ -40,6 +40,7 @@ const Cart: React.FC = () => {
           <h2 className="p-2 mb-4 text-xl font-bold bg-white text-blue-500 shadow-sm w-[80%] mx-auto mt-2 border border-gray-200">
             Your Cart
           </h2>
+          
           <div className="grid md:grid-cols-[60%_auto] gap-y-2 gap-x-4 w-[80%] mx-auto relative">
             <div className="relative flex flex-col order-2 bg-white border border-gray-200 shadow-sm md:order-1 h-max">
               {/* Product List */}
@@ -54,6 +55,7 @@ const Cart: React.FC = () => {
                 </button>
               </div>
             </div>
+            
             {/* Cart Summary */}
             <div className="sticky order-1 p-4 px-6 bg-white border border-gray-200 shadow-md md:order-2 h-72 top-20 ">
               <h2 className="px-2 pb-4 font-semibold text-gray-500 uppercase text-md ">
