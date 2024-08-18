@@ -30,3 +30,11 @@ export interface ButtonProps {
     onClick?:()=>void;
     color:string;
   }
+
+export interface CartProductListProps {
+    items : CartItem[]
+}
+
+export interface Total {
+  total: number;
+}
