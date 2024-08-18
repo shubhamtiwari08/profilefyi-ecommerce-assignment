@@ -35,13 +35,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
           </span>
         </p>
         {!isAddedToCart ? (
-          <Button color="blue" onClick={()=>onAddToCart()}>
+          <Button color="primary" onClick={()=>onAddToCart()}>
              <ShoppingCartIcon className="inline-block w-6 h-6 pb-1 text-white" />{" "}
              Add to Cart
           </Button>
         ) : (
          <Link to={'/cart'}>
-         <Button color="orange">
+         <Button color="secondary">
              <span>Go to cart</span>
              <ArrowLongRightIcon className="inline-block w-6 h-6 pt-1 text-white transition-all duration-700 ease-in-out transform group-hover:translate-x-1" />{" "}
          </Button>
