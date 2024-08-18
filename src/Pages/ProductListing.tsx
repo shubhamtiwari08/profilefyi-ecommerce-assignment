@@ -3,7 +3,7 @@ import productsData from '../Data/product.json'
 import ProductCard from '../Components/ProductCard/ProductCard';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { RootState } from '../Store/index';
+  import { RootState } from '../Store/index';
 import { setProducts } from '../Store/slices/productSlice';
 import { addToCart, removeFromCart } from '../Store/slices/cartSlice';
 
@@ -41,7 +41,7 @@ const ProductListing: React.FC = () => {
     },[])
 
   return (
-    <div className=' w-[98%] my-2 px-8 py-4 mx-auto bg-white'>
+    <div className=' w-[98%] my-2 px-8 py-4 mx-auto bg-white relative z-[0]'>
       <div className='p-2 w-[90%] mx-auto border-b border-b-gray-200'> <p>All Products ({products.length})</p></div>
     <div className="container grid grid-cols-1 gap-4 mx-auto mt-2 md:grid-cols-3 md:px-16 lg:px-16 sm:grid-cols-2 lg:grid-cols-4">
     {products.map((product) => (

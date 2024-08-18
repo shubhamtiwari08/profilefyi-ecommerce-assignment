@@ -1,16 +1,19 @@
 import { ShoppingCartIcon } from '@heroicons/react/16/solid';
 import { GiftTopIcon } from '@heroicons/react/20/solid';
+import { RootState } from '../../Store/index';
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
     const [isOpen, setIsOpen] = useState<Boolean>(false);
+    const products = useSelector((state:RootState) => state.cart.items) 
 
     const toggleMenu = () => {
       setIsOpen(!isOpen);
     };
   return (
-    <nav className="text-white bg-blue-600">
+    <nav className="sticky top-0 z-10 text-white bg-blue-600 shadow-sm shadow-gray-500">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -19,7 +22,7 @@ const Navbar: React.FC = () => {
           <div className="hidden md:block">
             <div className="flex items-baseline ml-10 space-x-4">
               <NavLink to="/products" className="px-3 py-2 text-sm font-medium rounded-md hover:bg-blue-700"><GiftTopIcon className="inline-block w-6 h-6 pb-1 text-white" />Products</NavLink>
-              <NavLink to="/cart" className="px-3 py-2 text-sm font-medium rounded-md hover:bg-blue-700"><ShoppingCartIcon className="inline-block w-6 h-6 pb-1 text-white" />Cart</NavLink>
+              <NavLink to="/cart" className="relative px-3 py-2 text-sm font-medium rounded-md hover:bg-blue-700"><ShoppingCartIcon className="inline-block w-6 h-6 pb-1 text-white" />  Cart <span className='absolute top-[-0.5rem] flex items-center justify-center w-6 h-6 p-1 bg-red-500 border border-white rounded-lg left-5 bg-red'><p>{products.length}</p></span></NavLink>
             </div>
           </div>
           <div className="flex -mr-2 md:hidden">
