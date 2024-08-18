@@ -35,7 +35,7 @@ const Cart: React.FC = () => {
   }, [items]);
 
   return (
-    <>
+    <div className="min-h-screen md:max-h-screen">
       <h2 className="p-2 mb-4 text-xl font-bold bg-white text-blue-500 shadow-sm w-[80%] mx-auto mt-2 border border-gray-200 ">
         Your Cart
       </h2>
@@ -73,7 +73,7 @@ const Cart: React.FC = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
