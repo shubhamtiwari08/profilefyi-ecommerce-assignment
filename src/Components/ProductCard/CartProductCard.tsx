@@ -1,42 +1,31 @@
 import React from "react";
 import {
-  CartItem,
   decreaseQuantity,
   increaseQuantity,
   removeFromCart,
 } from "../../Store/slices/cartSlice";
 import { useDispatch } from "react-redux";
+import { CartItem, CartProductProps } from "../../libs/types";
 
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  imageUrl: string;
-  description: string;
-  discount: number;
-  quantity?: number;
-}
 
-interface Props {
-  itemDetails: Product;
-}
 
-const CartProductCard: React.FC<Props> = ({ itemDetails }) => {
+const CartProductCard: React.FC<CartProductProps> = ({ itemDetails }) => {
+  const dispatch = useDispatch();
+  
   const { id, imageUrl, name, price, quantity, discount,description } = itemDetails;
 
   const ActualPrice = ((price * (100 - discount)) / 100).toFixed(2)
 
-  const dispatch = useDispatch();
 
   const handleRemove = (id: number) => {
     dispatch(removeFromCart(id));
   };
 
-  const handleAdd = (product: Product) => {
+  const handleAdd = (product: CartItem) => {
     dispatch(increaseQuantity(product));
   };
 
-  const handleSubtract = (product: Product) => {
+  const handleSubtract = (product: CartItem) => {
     dispatch(decreaseQuantity(product));
   };
 
@@ -68,11 +57,11 @@ const CartProductCard: React.FC<Props> = ({ itemDetails }) => {
       </div>
       <div className="flex items-center gap-2 mt-2">
             <button
-              className="w-6 h-6 pb-1 text-base leading-5 border border-gray-300 rounded-full cursor-pointer bg-gray-50 disabled:text-gray-400"
+              className="w-6 h-6 pb-1 text-base leading-5 border border-gray-300 rounded-full cursor-pointer bg-gray-50 disabled:text-gray-400 disabled:bg-gray-200 disabled:cursor-not-allowed"
               onClick={() => handleSubtract(itemDetails)}
               disabled={disableQuantityBtn}
             >
-              <span>-</span>
+              -
             </button>
             <input
               type="text"

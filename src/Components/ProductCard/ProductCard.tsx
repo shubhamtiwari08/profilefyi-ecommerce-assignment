@@ -1,20 +1,11 @@
 import {
   ArrowLongRightIcon,
-  MinusCircleIcon,
   ShoppingCartIcon,
 } from "@heroicons/react/16/solid";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { ProductCardProps } from "../../libs/types";
 
-interface ProductCardProps {
-  imageUrl: string;
-  name: string;
-  price: number;
-  onAddToCart: () => void;
-  isAddedToCart: Boolean;
-  description: string;
-  discount: number;
-}
 
 const ProductCard: React.FC<ProductCardProps> = ({
   imageUrl,
