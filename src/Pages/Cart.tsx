@@ -24,6 +24,12 @@ const Cart: React.FC = () => {
     setTotal({ total });
   };
 
+  const DiscountedAmount = items.reduce(
+    (acc, curr) => acc +( curr.price * ((100 - curr.discount)/100)) * (curr.quantity || 1),
+    0
+  );
+
+  const TotalDiscount = (total.total - DiscountedAmount).toFixed(2)
   useEffect(() => {
     handleTotal();
   }, [items]);
@@ -33,8 +39,8 @@ const Cart: React.FC = () => {
       <h2 className="p-2 mb-4 text-xl font-bold bg-white text-blue-500 shadow-sm w-[80%] mx-auto mt-2 border border-gray-200 ">
         Your Cart
       </h2>
-      <div className="grid grid-cols-[60%_auto] gap-y-2 gap-x-4 w-[80%] mx-auto relative z-[-1]">
-        <div className="relative flex flex-col bg-white border border-gray-200 shadow-sm h-max">
+      <div className="grid md:grid-cols-[60%_auto] gap-y-2 gap-x-4 w-[80%] mx-auto relative z-[-1] ">
+        <div className="relative flex flex-col order-2 bg-white border border-gray-200 shadow-sm md:order-1 h-max">
           {/* Product List */}
           <div className="w-full">
             {items.map((item) => (
@@ -46,9 +52,9 @@ const Cart: React.FC = () => {
               PLACE ORDER
             </button>
           </div>
-        </div>
+        </div> 
         {/* Cart Summary */}
-        <div className="sticky p-4 px-6 bg-white border border-gray-200 shadow-md h-72 top-20 ">
+        <div className="sticky order-1 p-4 px-6 bg-white border border-gray-200 shadow-md md:order-2 h-72 top-20 ">
           <h2 className="px-2 pb-4 font-semibold text-gray-500 uppercase text-md ">
             Price Details
           </h2>
@@ -57,12 +63,12 @@ const Cart: React.FC = () => {
             <p className="text-start">Price</p>
             <p className="text-end">${total.total.toFixed(2)}</p>
             <p className="text-start">Discount</p>
-            <p className="text-green-600 text-end">-0</p>
+            <p className="text-green-600 text-end">-${TotalDiscount}</p>
             <p className="text-start">Delivery Charges</p>
             <p className="text-green-600 text-end">Free</p>
             <div className="flex justify-between col-span-2 py-4 font-bold border-dashed border-y-2">
             <p>Total</p>
-            <p>${total.total.toFixed(2)}</p>
+            <p>${DiscountedAmount.toFixed(2)}</p>
             </div>
           </div>
         </div>
